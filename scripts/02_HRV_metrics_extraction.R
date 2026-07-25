@@ -1,6 +1,6 @@
 library(readxl)
 library(RHRV)
-all_valleys <- readxl::read_xlsx("C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx", sheet = "all_valleys")
+all_valleys <- readxl::read_xlsx("data.xlsx", sheet = "all_valleys")
 all_valleys$Time <- as.numeric(all_valleys$Time)
 all_valleys$Value <- as.numeric(all_valleys$Value)
 
