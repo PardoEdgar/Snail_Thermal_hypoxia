@@ -1,16 +1,7 @@
 library(tidyverse)
-library(stringr)
-library(pracma)
-library(rstatix)
-library(gridExtra)
-library(readxl)
-library(ggh4x)
-library(ggforce)
-library(patchwork) 
 library(signal)
-library(readr)
 
-folder_path <- "" #folder_with_pixel_intensity_data_from_individuals
+folder_path <- "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/Cold_experiment" #folder_with_pixel_intensity_data_from_individuals
 files <-  list.files(path = folder_path, pattern = "*.csv", full.names = TRUE)
 read_and_label <- function(file) {
   df <- read.csv(file)
@@ -22,11 +13,10 @@ data_list <- lapply(files, read_and_label)
 
 Data_complete <- bind_rows(data_list)  %>% 
    mutate(Treatment = str_extract(source_file,  "(?<=\\d_)[^_]+")) %>% 
-  mutate(Snail = str_extract(source_file,  "\\d+")) %>% rename("Frame" = X) %>% mutate(Time = Frame*(1/30))
+  mutate(ID = str_extract(source_file,  "\\d+")) %>% rename("Frame" = X) 
 
-
-Available_IDs <- c() #all Numbers of available IDs
-All_results_cold_experiment <- list() 
+Available_IDs <- c() #all numbers of available IDs
+All_results_experiment <- list() 
 for (id in Available_IDs) {
 filename <- file.path(folder_path, paste0(id, "_ENVCOLD_Ven_Edited.csv"))
     cat("Searching:", filename, "\n")
@@ -187,19 +177,19 @@ data_long <- data %>%
       legend.text = element_text(color = "black")
     )
 
-  ggsave(filename = file.path(folder_path, "Graphs", paste0("Graph_ENVCOLD", id, ".png")),
+  ggsave(filename = file.path(folder_path, "Graphs", paste0("Graph", id, ".png")),
          plot = plot_individual, width = 12, height = 8, dpi = 300)
 
-  All_results_cold_experiment[[as.character(id)]] <- list(
+  All_results_experiment[[as.character(id)]] <- list(
     Smoothed_data = data_smoothed %>% mutate(ID = id),
-    valles_finales = final_valleys %>% mutate(ID = id),
-    picos_finales = final_peaks %>% mutate(ID = id)
+    final_valleys = final_valleys %>% mutate(ID = id),
+    final_peaks = final_peaks %>% mutate(ID = id)
   )
   }
 
-Smoothed_data_all <- map_dfr(All_results_cold_experiment, "Smoothed_data")
-all_valleys <- map_dfr(All_results_cold_experiment, "valles_finales")
-picos_ENVCOLD_rep <- map_dfr(All_results_cold_experiment, "picos_finales")
+Smoothed_data_all <- map_dfr(All_results_experiment, "Smoothed_data")
+all_valleys <- map_dfr(All_results_experiment, "final_valleys")
+picos_ENVCOLD_rep <- map_dfr(All_results_experiment, "final_peaks")
 
 #Repeat for each treatment
 all_valleys <- all_valleys %>% 
