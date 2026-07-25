@@ -1,20 +1,7 @@
 library(tidyverse)
 library(signal)
 
-folder_path <- "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/Cold_experiment" #folder_with_pixel_intensity_data_from_individuals
-files <-  list.files(path = folder_path, pattern = "*.csv", full.names = TRUE)
-read_and_label <- function(file) {
-  df <- read.csv(file)
-  df$source_file <- basename(file)  
-  return(df)
-}
-
-data_list <- lapply(files, read_and_label)
-
-Data_complete <- bind_rows(data_list)  %>% 
-   mutate(Treatment = str_extract(source_file,  "(?<=\\d_)[^_]+")) %>% 
-  mutate(ID = str_extract(source_file,  "\\d+")) %>% rename("Frame" = X) 
-
+folder_path <- "" #folder_with_pixel_intensity_data_from_individuals
 Available_IDs <- c() #all numbers of available IDs
 All_results_experiment <- list() 
 for (id in Available_IDs) {
