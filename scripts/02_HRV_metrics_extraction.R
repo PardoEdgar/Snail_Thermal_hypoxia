@@ -4,12 +4,12 @@ all_valleys <- readxl::read_xlsx("data.xlsx", sheet = "all_valleys")
 all_valleys$Time <- as.numeric(all_valleys$Time)
 all_valleys$Value <- as.numeric(all_valleys$Value)
 
-extract_HRV_metrics <- function(hrv_obj, id) {
+extract_HRV_metrics <- function(hrv_obj, ID) {
   if (!is.null(hrv_obj$TimeAnalysis[[1]])) {
     ta <- hrv_obj$TimeAnalysis[[1]] 
     RR_ms <- hrv_obj$Beat 
       data.frame(
-      ID = id,
+      ID = ID,
       MeanHR = mean(hrv_obj$HR, na.rm = TRUE),
       SDNN = ta$SDNN,
       RMSSD = ta$rMSSD,
@@ -87,7 +87,7 @@ pnn100_data <- RR_data %>%
   group_by(ID) %>%
   summarise(pNN100= pNN100_function(RRms, x = 100)) 
 
-View(pnn100_data)
 
 HRV_metrics_total <- HRV_metrics_total %>%
   left_join(pnn100_data, by = "ID") 
+
