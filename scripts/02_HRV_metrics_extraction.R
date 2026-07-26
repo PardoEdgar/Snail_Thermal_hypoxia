@@ -106,6 +106,28 @@ HRV_metrics_total <- HRV_metrics_total %>%
   left_join(pnn100_data, by = c("Treatment", "ID")) %>%
   left_join(CV_data, by = c("Treatment", "ID"))
 
+
+HRV_metrics_total <- HRV_metrics_total %>%
+  mutate(
+    Temperature = case_when(
+      Treatment == "1C" ~ 1,
+      Treatment == "8C" ~ 8,
+      Treatment == "15C" ~ 15,
+      Treatment == "29C" ~ 29,
+      Treatment == "36C" ~ 36,
+      Treatment == "WATHEAT" ~ 21,
+      Treatment == "ENVHEAT" ~ 20,
+      Treatment == "WATCOLD" ~ 22,
+      Treatment == "ENVCOLD" ~ 22
+    )
+  ) %>%
+  dplyr::filter(!is.na(Temperature))
+
+
 view(HRV_metrics_total)
 
 
+write_csv(
+  HRV_metrics_total,
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/HRV_metrics_total_t.csv",
+)
