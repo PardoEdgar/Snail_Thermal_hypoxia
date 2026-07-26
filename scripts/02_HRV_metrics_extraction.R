@@ -48,10 +48,6 @@ HRV_metrics_total<- imap_dfr(results_HRV, ~ extract_HRV_metrics(.x, .y))
 HRV_metrics_total <- HRV_metrics_total %>%
   tidyr::separate(ID, into = c("Treatment", "ID"), sep = "_")
 
-View(HRV_metrics_total)
-
-
-
 
 extract_RR <- function(hrv_obj, ID) {
   if (!is.null(hrv_obj$TimeAnalysis[[1]])) {
@@ -83,11 +79,26 @@ pNN100_function <- function(rr, x = 100) {
   return(pnnx)
 }
 
+
+cv_function <- function(rr) {
+  mean <- mean(rr)   
+  sd <- sd(rr)   
+  CV <- sd / mean * 100
+  return(CV)
+}
+
+CV_data <- RR_data %>%
+  group_by(ID) %>%
+  summarise(CV = cv_function(RRms)) 
+
+
 pnn100_data <- RR_data %>%
   group_by(ID) %>%
   summarise(pNN100= pNN100_function(RRms, x = 100)) 
 
-
 HRV_metrics_total <- HRV_metrics_total %>%
-  left_join(pnn100_data, by = "ID") 
+  left_join(pnn100_data, by = "ID")  %>%   left_join(CV_data, by = "ID")
+
+
+view(HRV_metrics_total)
 
