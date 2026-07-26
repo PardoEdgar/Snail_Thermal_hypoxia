@@ -124,10 +124,20 @@ HRV_metrics_total <- HRV_metrics_total %>%
   dplyr::filter(!is.na(Temperature))
 
 
+HRV_metrics_total <- HRV_metrics_total %>%
+  mutate(
+    Block = case_when(
+      Treatment == "1C" ~ "cold",
+      Treatment == "8C" ~ "cold",
+      Treatment == "15C" ~ "cold",
+      Treatment == "29C" ~ "warm",
+      Treatment == "36C" ~ "warm",
+      Treatment == "WATHEAT" ~ "warm",
+      Treatment == "ENVHEAT" ~ "warm",
+      Treatment == "WATCOLD" ~ "cold",
+      Treatment == "ENVCOLD" ~ "cold"
+    )
+  ) %>%
+  dplyr::filter(!is.na(Block))
+
 view(HRV_metrics_total)
-
-
-write_csv(
-  HRV_metrics_total,
-  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/HRV_metrics_total_t.csv",
-)
