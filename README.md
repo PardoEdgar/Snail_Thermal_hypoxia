@@ -5,5 +5,6 @@
 # Requirements
 # Workflow
 # Licenses
+  -MIT license
 # Collaborators
 ## Juan Pablo Hernández, Universidad del Rosario
