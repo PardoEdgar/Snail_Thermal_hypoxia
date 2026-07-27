@@ -1,5 +1,7 @@
 # Snail Thermal hypoxia
 
+<img width="975" height="379" alt="image" src="https://github.com/user-attachments/assets/d48a725e-c2e6-456a-a952-b08fa12b6645" />
+
 This repository contains all 
 
 # Author: Edgar Alejandro Pardo Sarmiento
