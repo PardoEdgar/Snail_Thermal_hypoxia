@@ -3,9 +3,9 @@ library(readxl)
 library(rstatix)
 library(ggpubr)
 
-#Results: HRV baseline
+#Results: HR & HRV baseline
 HRV_metrics_total <- readxl::read_xlsx(
-  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
 HRV_metrics_total <- HRV_metrics_total %>%
@@ -59,7 +59,7 @@ mean_baseline
 
 shapiro_test(HRV_metrics_baseline_heat$CV)
 n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(CV)
-n #Normales MeanHR
+n 
 levene_test(HRV_metrics_baseline_cold, CV ~ Treatment)
 wilcox_test(HRV_metrics_baseline_cold, CV ~ Treatment)
 levene_test(HRV_metrics_baseline_heat, CV ~ Treatment)
@@ -122,7 +122,7 @@ CV_1 <- ggplot(
   theme_classic2() +
   theme(legend.position = "Top")
 
-#Time/domain metrics
+#Time domain metrics
 
 ggplot(
   data = HRV_metrics_baseline,
@@ -258,23 +258,23 @@ ggplot(
 
 shapiro_test(HRV_metrics_baseline_heat$NNi)
 n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(NNi)
-n 
+n
 
 shapiro_test(HRV_metrics_baseline_heat$pNN50)
 n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(pNN50)
-n 
+n
 
 shapiro_test(HRV_metrics_baseline_heat$pNN100)
 n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(pNN100)
-n 
+n
 
 shapiro_test(HRV_metrics_baseline_heat$SDNN)
 n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(SDNN)
-n 
+n
 
 shapiro_test(HRV_metrics_baseline_heat$RMSSD)
 n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(RMSSD)
-n 
+n
 
 mean_baseline <- HRV_metrics_baseline %>%
   group_by(Treatment) %>%
