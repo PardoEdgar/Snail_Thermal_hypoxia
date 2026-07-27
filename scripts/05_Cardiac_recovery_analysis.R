@@ -16,7 +16,7 @@ Heart_data_30s <- all_valleys %>%
   arrange(Time) %>%
   mutate(
     delta_t = Time - lag(Time),
-    HR = 60 / delta_t 
+    HR = 60 / delta_t
   ) %>%
   dplyr::filter(!is.na(HR)) %>%
   mutate(period = ifelse(Time <= 30, "First_30s", "Last_30s")) %>%
@@ -199,3 +199,13 @@ stats_results <- CV_data_30s %>%
   group_by(Treatment) %>%
   wilcox_test(CV ~ period, paired = TRUE)
 stats_results
+
+
+Heart_data_30s |>
+  group_by(Treatment, period) |>
+  summarise(Mean = mean(MeanHR))
+
+
+CV_data_30s |>
+  group_by(Treatment, period) |>
+  summarise(CV = mean(CV))
