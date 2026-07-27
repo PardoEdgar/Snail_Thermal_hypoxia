@@ -1,3 +1,8 @@
+###############################################################################
+# Optocardiography
+# Author: Edgar Alejandro Pardo-Sarmiento
+###############################################################################
+
 library(tidyverse)
 library(signal)
 
