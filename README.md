@@ -1,5 +1,5 @@
 # Snail Thermal hypoxia
-
+This repository contains all 
 
 # Author: Edgar Alejandro Pardo Sarmiento
 # Requirements
@@ -17,6 +17,12 @@
  - 04.d
  - 05.d
  - 06.d
+# Contents
+ - Data
+    - Optocadiographic_data
+ - Images
+    - Optocardiograms
+ - ScriptS
 # Licenses
   - MIT license
 # Collaborators
