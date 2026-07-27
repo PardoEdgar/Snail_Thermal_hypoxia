@@ -7,11 +7,11 @@ library(tidyverse)
 library(readxl)
 
 all_valleys <- readxl::read_xlsx(
-  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "all_valleys"
 )
 all_valleys$Time <- as.numeric(all_valleys$Time)
-Heart_data_30s <- all_valleys %>%
+Cardiac_time_windows <- all_valleys %>%
   group_by(ID, Treatment) %>%
   arrange(Time) %>%
   mutate(
@@ -21,9 +21,13 @@ Heart_data_30s <- all_valleys %>%
   dplyr::filter(!is.na(HR)) %>%
   mutate(period = ifelse(Time <= 30, "First_30s", "Last_30s")) %>%
   group_by(ID, Treatment, period) %>%
-  summarise(MeanHR = mean(HR, na.rm = TRUE), .groups = "drop")
+  summarise(
+    MeanHR = mean(HR, na.rm = TRUE),
+    CV = (sd(delta_t) / mean(delta_t)) * 100,
+    .groups = "drop"
+  )
 
-Heart_data_30s <- Heart_data_30s %>%
+Cardiac_time_windows <- Cardiac_time_windows %>%
   dplyr::filter(
     Treatment %in% c("1C", "8C", "15C", "WATHEAT", "29C", "36C")
   ) %>%
@@ -45,7 +49,7 @@ Heart_data_30s <- Heart_data_30s %>%
   )
 
 MeanHR_30 <- ggplot(
-  Heart_data_30s,
+  Cardiac_time_windows,
   aes(x = Temperature, y = MeanHR, fill = period)
 ) +
   geom_boxplot(
@@ -87,59 +91,32 @@ MeanHR_30 <- ggplot(
   ) +
   labs(x = "Temperature (°C)", y = "Heart rate (BPM)") +
   coord_cartesian(ylim = c(15, 80)) +
-  scale_x_continuous(breaks = sort(unique(Heart_data_30s$Temperature))) +
+  scale_x_continuous(breaks = sort(unique(Cardiac_time_windows$Temperature))) +
   theme_classic2()
 
-by(Heart_data_30s, Heart_data_30s$period, function(Heart_data_30s) {
-  summary(lm(MeanHR ~ log(Temperature), data = Heart_data_30s))
-})
+by(
+  Cardiac_time_windows,
+  Cardiac_time_windows$period,
+  function(Cardiac_time_windows) {
+    summary(lm(MeanHR ~ log(Temperature), data = Cardiac_time_windows))
+  }
+)
 
-Heart_data_30s %>% group_by(Treatment, period) %>% shapiro_test(MeanHR)
+Cardiac_time_windows %>% group_by(Treatment, period) %>% shapiro_test(MeanHR)
 
-levene_test(MeanHR ~ Treatment, data = Heart_data_30s)
-hist(Heart_data_30s$MeanHR)
-qqnorm(Heart_data_30s$MeanHR)
-qqline(Heart_data_30s$MeanHR)
+levene_test(MeanHR ~ Treatment, data = Cardiac_time_windows)
+hist(Cardiac_time_windows$MeanHR)
+qqnorm(Cardiac_time_windows$MeanHR)
+qqline(Cardiac_time_windows$MeanHR)
 
-stats_results <- Heart_data_30s %>%
+stats_results <- Cardiac_time_windows %>%
   group_by(Treatment) %>%
   wilcox_test(MeanHR ~ period, paired = TRUE)
 stats_results
 
 
-CV_data_30s <- all_valleys %>%
-  arrange(ID, Treatment, Time) %>%
-  group_by(ID, Treatment) %>%
-  mutate(
-    period = ifelse(Time <= 30, "First_30s", "Last_30s")
-  ) %>%
-  group_by(ID, Treatment, period) %>%
-  mutate(
-    delta_t = (Time * 1000) - lag(Time * 1000),
-  ) %>%
-  dplyr::filter(!is.na(delta_t)) %>%
-  summarise(
-    CV = (sd(delta_t) / mean(delta_t)) * 100,
-    .groups = "drop"
-  )
-
-CV_data_30s <- CV_data_30s %>%
-  dplyr::filter(
-    Treatment %in% c("1C", "8C", "15C", "29C", "36C", "WATHEAT")
-  ) %>%
-  dplyr::mutate(
-    Temperature = case_when(
-      Treatment == "1C" ~ 1,
-      Treatment == "8C" ~ 8,
-      Treatment == "15C" ~ 15,
-      Treatment == "29C" ~ 29,
-      Treatment == "36C" ~ 36,
-      Treatment == "WATHEAT" ~ 21,
-    )
-  )
-
 CV_30S <- ggplot(
-  CV_data_30s,
+  Cardiac_time_windows,
   aes(x = Temperature, y = CV, fill = period)
 ) +
   geom_boxplot(
@@ -181,31 +158,38 @@ CV_30S <- ggplot(
   ) +
   labs(x = "Temperature (°C)", y = "Heart rate variability (CV%)") +
   coord_cartesian(ylim = c(0, 40)) +
-  scale_x_continuous(breaks = sort(unique(CV_data_30s$Temperature))) +
+  scale_x_continuous(breaks = sort(unique(Cardiac_time_windows$Temperature))) +
   theme_classic2()
 
-by(CV_data_30s, CV_data_30s$period, function(CV_data_30s) {
-  summary(lm(CV ~ Temperature + I(Temperature^2), data = CV_data_30s))
-})
+by(
+  Cardiac_time_windows,
+  Cardiac_time_windows$period,
+  function(Cardiac_time_windows) {
+    summary(lm(
+      CV ~ Temperature + I(Temperature^2),
+      data = Cardiac_time_windows
+    ))
+  }
+)
 
 
-CV_data_30s %>% group_by(Treatment, period) %>% shapiro_test(CV)
-levene_test(CV ~ Treatment, data = CV_data_30s)
-hist(CV_data_30s$CV)
-qqnorm(CV_data_30s$CV)
-qqline(CV_data_30s$CV)
+Cardiac_time_windows %>% group_by(Treatment, period) %>% shapiro_test(CV)
+levene_test(CV ~ Treatment, data = Cardiac_time_windows)
+hist(Cardiac_time_windows$CV)
+qqnorm(Cardiac_time_windows$CV)
+qqline(Cardiac_time_windows$CV)
 
-stats_results <- CV_data_30s %>%
+stats_results <- Cardiac_time_windows %>%
   group_by(Treatment) %>%
   wilcox_test(CV ~ period, paired = TRUE)
 stats_results
 
 
-Heart_data_30s |>
+Cardiac_time_windows |>
   group_by(Treatment, period) |>
   summarise(Mean = mean(MeanHR))
 
 
-CV_data_30s |>
+Cardiac_time_windows |>
   group_by(Treatment, period) |>
   summarise(CV = mean(CV))
