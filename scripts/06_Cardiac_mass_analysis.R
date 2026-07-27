@@ -1,4 +1,7 @@
-#Mass effect in HR and HRV across different temperatures
+###############################################################################
+# Mass effect in HR and HRV across different temperatures
+# Author: Edgar Alejandro Pardo-Sarmiento
+###############################################################################
 library(lme4)
 library(lmerTest)
 library(ggpubr)
