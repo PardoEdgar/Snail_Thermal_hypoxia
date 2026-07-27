@@ -114,6 +114,10 @@ stats_results <- Cardiac_time_windows %>%
   wilcox_test(MeanHR ~ period, paired = TRUE)
 stats_results
 
+Cardiac_time_windows |>
+  group_by(Treatment, period) |>
+  summarise(Median_HR = median(MeanHR), IQR_HR = IQR(MeanHR))
+
 
 CV_30S <- ggplot(
   Cardiac_time_windows,
@@ -187,9 +191,4 @@ stats_results
 
 Cardiac_time_windows |>
   group_by(Treatment, period) |>
-  summarise(Mean = mean(MeanHR))
-
-
-Cardiac_time_windows |>
-  group_by(Treatment, period) |>
-  summarise(CV = mean(CV))
+  summarise(Median_CV = median(CV), IQR_CV = IQR(CV))
