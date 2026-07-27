@@ -1,3 +1,8 @@
+###############################################################################
+# HRV metrics extraction
+# Author: Edgar Alejandro Pardo-Sarmiento
+###############################################################################
+
 library(readxl)
 library(RHRV)
 library(tidyverse)
