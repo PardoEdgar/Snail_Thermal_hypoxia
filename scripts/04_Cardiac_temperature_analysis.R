@@ -1,3 +1,8 @@
+###############################################################################
+# Cardiac parameters analysis (Comparing responses across different temperatures)
+# Author: Edgar Alejandro Pardo-Sarmiento
+###############################################################################
+
 library(tidyverse)
 library(rstatix)
 library(ggpubr)
