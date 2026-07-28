@@ -20,7 +20,6 @@ Signal processing and heart rate variability (HRV) analyses are implemented in R
 
 
 ## Author
-
 **Edgar Alejandro Pardo-Sarmiento**
 
 - Escuela de Ciencias e Ingeniería, Universidad del Rosario, Colombia
@@ -62,4 +61,4 @@ All data and code required to reproduce the analyses are included in this reposi
 ## Collaborators
 **Juan Pablo Hernández**
 
-Escuela de Ciencias e Ingenería, Universidad del Rosario, Colombia
+- Escuela de Ciencias e Ingenería, Universidad del Rosario, Colombia
