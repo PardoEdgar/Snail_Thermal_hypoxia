@@ -59,4 +59,6 @@ All data and code required to reproduce the analyses are included in this reposi
  - All data and figures are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 ## Collaborators
-**Juan Pablo Hernández, Universidad del Rosario, Escuela de Ciencias e Ingenería, Colombia**
+**Juan Pablo Hernández**
+
+Escuela de Ciencias e Ingenería, Universidad del Rosario, Colombia
