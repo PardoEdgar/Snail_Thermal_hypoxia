@@ -7,7 +7,7 @@ This repository contains all
 
 
 
-# Author: Edgar Alejandro Pardo Sarmiento
+# Author: Edgar Alejandro Pardo-Sarmiento
 
 # Requirements
  - R (V.4.4.2)
