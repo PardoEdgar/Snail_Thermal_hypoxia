@@ -52,7 +52,7 @@ Signal processing and heart rate variability (HRV) analyses are implemented in R
 
 ## Data Availability
 
-All data and code required to reproduce the analyses are included in this repository.
+All data and code required to reproduce the workflow and analyses are included in this repository.
 
 ## Licenses
  - The source code in this repository is licensed under the MIT License.  
