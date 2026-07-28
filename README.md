@@ -1,4 +1,4 @@
-# Snail Thermal hypoxia (2026), Universidad del Rosario
+# Snail Thermal hypoxia (2026)
 
 This repository contains all data and code used in the study:
 
