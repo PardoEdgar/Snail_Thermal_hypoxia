@@ -12,11 +12,11 @@ This repository contains all data and code used in the study:
 
 ## Overview
 
-This repository provides a reproducible workflow to quantify cardiac activity and locomotion speed in the land snail *Cornu aspersum*. 
+This repository has the content to quantify cardiac activity during short-term water immersion across different tempeeratures in the land snail *Cornu aspersum*. 
 
-The approach combines optocardiography based on pixel intensity changes, automated stripe tracking on a snail treadmill using TrackMate, and deep learning-based segmentation with StarDist 2D. 
+Our methodology uses optocardiography based on pixel intensity changes.
 
-Signal processing and heart rate variability (HRV) analyses are implemented in R to investigate the relationship between physiological adjustments and experimentally induced behavioral states, such as retraction and locomotion.
+Signal processing and heart rate variability (HRV) analyses are implemented in R to investigate.
 
 
 ## Author
