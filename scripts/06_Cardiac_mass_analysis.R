@@ -2,6 +2,7 @@
 # Mass effect in HR and HRV across different temperatures
 # Author: Edgar Alejandro Pardo-Sarmiento
 ###############################################################################
+library(tidyverse)
 library(lme4)
 library(lmerTest)
 library(ggpubr)
@@ -12,15 +13,15 @@ library(ggpubr)
 library(readxl)
 
 body_mass <- readxl::read_xlsx(
-  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "Body_mass"
 )
 body_mass$ID <- as.character(body_mass$ID)
 HRV_metrics_total <- readxl::read_xlsx(
-  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
-
+View(combined_data)
 HRV_metrics_total <- HRV_metrics_total %>%
   mutate(across(
     c(
@@ -40,7 +41,7 @@ HRV_metrics_total$ID <- as.character(HRV_metrics_total$ID)
 combined_data <- left_join(
   HRV_metrics_total,
   body_mass,
-  by = c("ID", "Temperature", "Block")
+  by = c("ID", "Treatment", "Block")
 ) %>%
   dplyr::filter(
     Temperature %in% c(1, 8, 15, 21, 29, 36)
