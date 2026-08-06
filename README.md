@@ -63,7 +63,7 @@ All data and code required to reproduce the workflow and analyses are included i
 
 - Escuela de Ciencias e Ingenería, Universidad del Rosario, Colombia
 
-**Juan Pablo Hernández**
+**Andre J. Riveros**
 
 - Escuela de Ciencias e Ingeniería, Universidad del Rosario, Bogota. Colombia
 - Department of Neuroscience, School of Science, University of Arizona, Tucson, Arizona. United States of America
