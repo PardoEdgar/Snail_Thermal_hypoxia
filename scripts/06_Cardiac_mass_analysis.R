@@ -7,8 +7,6 @@ library(lme4)
 library(lmerTest)
 library(ggpubr)
 library(broom)
-library(performance)
-library(emmeans)
 library(ggpubr)
 library(readxl)
 
