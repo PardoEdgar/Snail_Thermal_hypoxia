@@ -108,7 +108,7 @@ R2_by_temp_HR <- combined_data %>%
   ) %>%
   mutate(stats = lapply(model, glance)) %>%
   tidyr::unnest_wider(stats) %>%
-  dplyr::select(Temperature, r.squared, adj.r.squared, p.value)
+  dplyr::select(Temperature, adj.r.squared, p.value)
 R2_by_temp_HR
 
 slopes_by_temp_HR <- combined_data %>%
@@ -118,12 +118,10 @@ slopes_by_temp_HR <- combined_data %>%
   ) %>%
   mutate(coefs = lapply(model, tidy)) %>%
   unnest(coefs) %>%
-  dplyr::filter(term == "`Mass_(g)`") %>%
   dplyr::select(
     Temperature,
+    term,
     slope = estimate,
-    std_error = std.error,
-    p_value = p.value
   )
 slopes_by_temp_HR
 
@@ -140,8 +138,9 @@ R2_by_temp_CV <- combined_data %>%
   ) %>%
   mutate(stats = lapply(model, glance)) %>%
   tidyr::unnest_wider(stats) %>%
-  dplyr::select(Temperature, r.squared, adj.r.squared, p.value)
+  dplyr::select(Temperature, adj.r.squared, p.value)
 R2_by_temp_CV
+
 
 slopes_by_temp_CV <- combined_data %>%
   group_by(Temperature) %>%
@@ -150,11 +149,9 @@ slopes_by_temp_CV <- combined_data %>%
   ) %>%
   mutate(coefs = lapply(model, tidy)) %>%
   unnest(coefs) %>%
-  dplyr::filter(term == "`Mass_(g)`") %>%
   dplyr::select(
     Temperature,
+    term,
     slope = estimate,
-    std_error = std.error,
-    p_value = p.value
   )
 slopes_by_temp_CV
