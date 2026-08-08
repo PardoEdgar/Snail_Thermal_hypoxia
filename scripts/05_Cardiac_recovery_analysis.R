@@ -7,7 +7,7 @@ library(tidyverse)
 library(readxl)
 
 all_valleys <- readxl::read_xlsx(
-  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "all_valleys"
 )
 all_valleys$Time <- as.numeric(all_valleys$Time)
@@ -94,6 +94,7 @@ MeanHR_30 <- ggplot(
   scale_x_continuous(breaks = sort(unique(Cardiac_time_windows$Temperature))) +
   theme_classic2()
 
+
 by(
   Cardiac_time_windows,
   Cardiac_time_windows$period,
@@ -110,12 +111,31 @@ qqnorm(Cardiac_time_windows$MeanHR)
 qqline(Cardiac_time_windows$MeanHR)
 
 stats_results <- Cardiac_time_windows %>%
-  group_by(Treatment) %>%
+  group_by(Treatment) %>% dplyr::filter(
+    Treatment %in% c("1C", "8C", "15C", "29C")
+  ) %>% 
+  t_test(MeanHR ~ period, paired = TRUE)
+stats_results
+
+
+stats_results <- Cardiac_time_windows %>%
+  group_by(Treatment) %>% dplyr::filter(
+    Treatment %in% c("WATHEAT", "36C")
+  ) %>% 
   wilcox_test(MeanHR ~ period, paired = TRUE)
 stats_results
 
 Cardiac_time_windows |>
-  group_by(Treatment, period) |>
+  group_by(Treatment, period) %>% dplyr::filter(
+    Treatment %in% c("1C", "8C", "15C", "29C")
+  ) %>% 
+  summarise(Mean_HR = mean(MeanHR), sd_HR = sd(MeanHR))
+
+
+Cardiac_time_windows |>
+  group_by(Treatment, period) %>% dplyr::filter(
+    Treatment %in% c("WATHEAT", "36C")
+  ) %>% 
   summarise(Median_HR = median(MeanHR), IQR_HR = IQR(MeanHR))
 
 
