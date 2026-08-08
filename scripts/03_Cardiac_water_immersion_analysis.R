@@ -10,7 +10,7 @@ library(ggpubr)
 
 #Results: HR & HRV baseline
 HRV_metrics_total <- readxl::read_xlsx(
-  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
 HRV_metrics_total <- HRV_metrics_total %>%
@@ -265,64 +265,79 @@ shapiro_test(HRV_metrics_baseline_heat$NNi)
 n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(NNi)
 n
 
-shapiro_test(HRV_metrics_baseline_heat$pNN50)
-n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(pNN50)
-n
-
-shapiro_test(HRV_metrics_baseline_heat$pNN100)
-n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(pNN100)
-n
-
-shapiro_test(HRV_metrics_baseline_heat$SDNN)
-n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(SDNN)
-n
-
-shapiro_test(HRV_metrics_baseline_heat$RMSSD)
-n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(RMSSD)
-n
-
 mean_baseline <- HRV_metrics_baseline %>%
   group_by(Treatment) %>%
   summarise(mean_NN = mean(NNi), sd_NN = sd(NNi))
 mean_baseline
+
+t_test(HRV_metrics_baseline_cold, NNi ~ Treatment)
+t_test(HRV_metrics_baseline_heat, NNi ~ Treatment)
+
+
+shapiro_test(HRV_metrics_baseline_heat$pNN50)
+n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(pNN50)
+n
+
+
+median_baseline <- HRV_metrics_baseline %>%
+  group_by(Treatment) %>% dplyr::filter(Treatment == "ENVCOLD") %>%
+  summarise(Median_pNN50 = mean(pNN50), sd_pNN50 = sd(pNN50))
+median_baseline
 
 median_baseline <- HRV_metrics_baseline %>%
   group_by(Treatment) %>%
   summarise(Median_pNN50 = median(pNN50), IQR_pNN50 = IQR(pNN50))
 median_baseline
 
+
+wilcox_test(HRV_metrics_baseline_cold, pNN50 ~ Treatment)
+wilcox_test(HRV_metrics_baseline_heat, pNN50 ~ Treatment)
+
+
+shapiro_test(HRV_metrics_baseline_heat$pNN100)
+n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(pNN100)
+n
+
+
 median_baseline <- HRV_metrics_baseline %>%
   group_by(Treatment) %>%
   summarise(Median_pNN100 = median(pNN100), IQR_pNN100 = IQR(pNN100))
 median_baseline
 
+
+wilcox_test(HRV_metrics_baseline_cold, pNN100 ~ Treatment)
+wilcox_test(HRV_metrics_baseline_heat, pNN100 ~ Treatment)
+
+
+shapiro_test(HRV_metrics_baseline_heat$SDNN)
+n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(SDNN)
+n
+
+
 median_baseline <- HRV_metrics_baseline %>%
-  group_by(Treatment) %>%
+  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("ENVCOLD", "WATCOLD"))%>%
+  summarise(Mean_SDNN = mean(SDNN), sd_SDNN = sd(SDNN))
+median_baseline
+
+median_baseline <- HRV_metrics_baseline %>%
+  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("ENVHEAT", "WATHEAT"))%>%
   summarise(Median_SDNN = median(SDNN), IQR_SDNN = IQR(SDNN))
 median_baseline
 
+
+wilcox_test(HRV_metrics_baseline_cold, SDNN ~ Treatment)
+wilcox_test(HRV_metrics_baseline_heat, SDNN ~ Treatment)
+
+
+shapiro_test(HRV_metrics_baseline_heat$RMSSD)
+n <- HRV_metrics_baseline %>% group_by(Treatment) %>% shapiro_test(RMSSD)
+n
 
 median_baseline <- HRV_metrics_baseline %>%
   group_by(Treatment) %>%
   summarise(Median_RMSSD = median(RMSSD), IQR_RMSSD = IQR(RMSSD))
 median_baseline
 
-t_test(HRV_metrics_baseline_cold, NNi ~ Treatment)
-t_test(HRV_metrics_baseline_heat, NNi ~ Treatment)
-
-wilcox_test(HRV_metrics_baseline_cold, NNi ~ Treatment)
-wilcox_test(HRV_metrics_baseline_heat, NNi ~ Treatment)
-
-
-wilcox_test(HRV_metrics_baseline_cold, pNN50 ~ Treatment)
-wilcox_test(HRV_metrics_baseline_heat, pNN50 ~ Treatment)
-
-wilcox_test(HRV_metrics_baseline_cold, pNN100 ~ Treatment)
-wilcox_test(HRV_metrics_baseline_heat, pNN100 ~ Treatment)
-
-
-wilcox_test(HRV_metrics_baseline_cold, SDNN ~ Treatment)
-wilcox_test(HRV_metrics_baseline_heat, SDNN ~ Treatment)
 
 wilcox_test(HRV_metrics_baseline_cold, RMSSD ~ Treatment)
 wilcox_test(HRV_metrics_baseline_heat, RMSSD ~ Treatment)
