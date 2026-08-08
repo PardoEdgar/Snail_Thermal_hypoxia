@@ -20,8 +20,7 @@ HRV_metrics_total <- readxl::read_xlsx(
   "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
-View(HRV_metrics_total)
-View(combined_data)
+
 HRV_metrics_total <- HRV_metrics_total %>%
   mutate(across(
     c(
@@ -127,6 +126,37 @@ slopes_by_temp_HR
 
 
 #CV
+
+mass_cv <- ggplot(
+  combined_data,
+  aes(x = `Mass_(g)`, y = CV, color = Temperature)
+) +
+  geom_point(size = 0.9, alpha = 0.4) +
+  geom_smooth(
+    method = "lm",
+    se = T,
+    linewidth = 1.3,
+    alpha = 0.10,
+    fullrange = T
+  ) +
+  scale_color_manual(
+    values = c(
+      "darkblue",
+      "lightblue",
+      "yellow",
+      "darkorange",
+      "red",
+      "darkred"
+    )
+  ) +
+  labs(
+    x = "Mass (g)",
+    y = "Heart Rate Variability (CV%)"
+  ) +
+  coord_cartesian(ylim = c(0, 40)) +
+  scale_x_continuous(limits = c(0, 8), expand = c(0, 0)) +
+  theme_classic2()
+
 model_lm_centered <- lm(CV ~ Temperature * Mass_centered, data = combined_data)
 summary(model_lm_centered)
 car::Anova(model_lm_centered, type = 3)
