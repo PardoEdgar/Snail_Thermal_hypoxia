@@ -9,6 +9,7 @@ library(ggpubr)
 library(broom)
 library(ggpubr)
 library(readxl)
+library(car)
 
 body_mass <- readxl::read_xlsx(
   "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
@@ -19,6 +20,7 @@ HRV_metrics_total <- readxl::read_xlsx(
   "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
+View(HRV_metrics_total)
 View(combined_data)
 HRV_metrics_total <- HRV_metrics_total %>%
   mutate(across(
@@ -87,11 +89,16 @@ mass_HR <- ggplot(
   scale_x_continuous(limits = c(0, 8), expand = c(0, 0)) +
   theme_classic2()
 
-model_lmm <- lmer(
-  MeanHR ~ Temperature * `Mass_(g)` + (1 | ID),
+model_lm <- lm(
+  MeanHR ~ Temperature * `Mass_(g)`,
   data = combined_data
 )
 summary(model_lmm)
+
+combined_data$Mass_centered <- combined_data$`Mass_(g)` - mean(combined_data$`Mass_(g)`, na.rm = TRUE)
+model_lm_centered <- lm(MeanHR ~ Temperature * Mass_centered, data = combined_data)
+summary(model_lm_centered)
+car::Anova(model_lm_centered, type = 3)
 
 
 R2_by_temp_HR <- combined_data %>%
@@ -122,12 +129,9 @@ slopes_by_temp_HR
 
 
 #CV
-model_lmm <- lmer(
-  CV ~ Temperature * `Mass_(g)` + (1 | ID),
-  data = combined_data
-)
-summary(model_lmm)
-
+model_lm_centered <- lm(CV ~ Temperature * Mass_centered, data = combined_data)
+summary(model_lm_centered)
+car::Anova(model_lm_centered, type = 3)
 
 R2_by_temp_CV <- combined_data %>%
   group_by(Temperature) %>%
