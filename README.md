@@ -32,8 +32,11 @@ Signal processing and heart rate variability (HRV) analyses are implemented in R
      - readxl
      - rstatix
      - FSA
+     - ggplot2
      - ggpubr
      - RHRV
+     - Car
+     - Signal
        
 ## Reproducibility
  - `01_Optocardiography.R`
