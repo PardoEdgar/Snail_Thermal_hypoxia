@@ -6,9 +6,6 @@ This repository contains all data and code used in the study:
 
 
 
-<img width="975" height="379" alt="image" src="https://github.com/user-attachments/assets/d48a725e-c2e6-456a-a952-b08fa12b6645" />
-
-
 
 ## Overview
 
@@ -23,7 +20,6 @@ Signal processing and heart rate variability (HRV) analyses are implemented in R
 **Edgar Alejandro Pardo-Sarmiento**
 
 - Escuela de Ciencias e Ingeniería, Universidad del Rosario, Colombia
-- Smithsonian Tropical Research Institute, Panama
 
 ## Requirements
  - R (V.4.4.2)
