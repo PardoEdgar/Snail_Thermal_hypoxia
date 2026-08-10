@@ -7,7 +7,7 @@ library(tidyverse)
 library(readxl)
 
 all_valleys <- readxl::read_xlsx(
-  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Data/data_extraction/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+"C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "all_valleys"
 )
 all_valleys$Time <- as.numeric(all_valleys$Time)
@@ -130,6 +130,13 @@ Cardiac_time_windows |>
     Treatment %in% c("1C", "8C", "15C", "29C")
   ) %>% 
   summarise(Mean_HR = mean(MeanHR), sd_HR = sd(MeanHR))
+
+
+Cardiac_time_windows |>
+  group_by(Treatment, period) %>% dplyr::filter(
+    Treatment %in% c("WATHEAT", "36C")
+  ) %>% 
+  summarise(Mean_HR = median(MeanHR), IQR_HR = IQR(MeanHR))
 
 
 Cardiac_time_windows |>
