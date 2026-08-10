@@ -292,17 +292,6 @@ dun_test_tem_HRV <- dunnTest(
 res_tem_HRV <- dun_test_tem_HRV$res
 res_tem_HRV
 
-
-kruskal.test(pNN100 ~ Treatment, data = HRV_metrics_total_tem)
-dun_test_tem_HRV <- dunnTest(
-  pNN100 ~ Treatment,
-  data = HRV_metrics_total_tem,
-  method = "holm"
-)
-res_tem_HRV <- dun_test_tem_HRV$res
-res_tem_HRV
-
-
 kruskal.test(SDNN ~ Treatment, data = HRV_metrics_total_tem)
 dun_test_tem_HRV <- dunnTest(
   SDNN ~ Treatment,
@@ -384,3 +373,4 @@ median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>%
   summarise(Median_RMSSD = median(RMSSD), IQR_RMSSD = IQR(RMSSD))
 median_summary
+
