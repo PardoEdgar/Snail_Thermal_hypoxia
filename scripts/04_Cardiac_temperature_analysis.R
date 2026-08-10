@@ -23,7 +23,6 @@ HRV_metrics_total <- HRV_metrics_total %>%
       "RMSSD",
       "pNN50",
       "NNi",
-      "pNN100",
       "CV"
     ),
     as.numeric
