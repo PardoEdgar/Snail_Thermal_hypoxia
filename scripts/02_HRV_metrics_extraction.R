@@ -7,7 +7,7 @@ library(readxl)
 library(RHRV)
 library(tidyverse)
 
-all_valleys <- readxl::read_xlsx("data.xlsx", sheet = "all_valleys")
+all_valleys <- readxl::read_xlsx("C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx", sheet = "all_valleys")
 all_valleys$Time <- as.numeric(all_valleys$Time)
 all_valleys$Value <- as.numeric(all_valleys$Value)
 
@@ -83,13 +83,6 @@ RR_data <- imap_dfr(results_HRV, ~ extract_RR(.x, .y))
 RR_data <- RR_data %>%
   tidyr::separate(ID, into = c("Treatment", "ID"), sep = "_")
 
-pNN100_function <- function(rr, x = 100) {
-  diff_rr <- abs(diff(rr)) # Succesive differences
-  nnx <- sum(diff_rr > x) # Number of differences > 100 ms
-  pnnx <- nnx / length(diff_rr) * 100
-  return(pnnx)
-}
-
 cv_function <- function(rr) {
   mean <- mean(rr)
   sd <- sd(rr)
@@ -103,12 +96,7 @@ CV_data <- RR_data %>%
   summarise(CV = cv_function(RRms), .groups = "drop")
 
 
-pnn100_data <- RR_data %>%
-  group_by(Treatment, ID) %>%
-  summarise(pNN100 = pNN100_function(RRms, x = 100), .groups = "drop")
-
 HRV_metrics_total <- HRV_metrics_total %>%
-  left_join(pnn100_data, by = c("Treatment", "ID")) %>%
   left_join(CV_data, by = c("Treatment", "ID"))
 
 
