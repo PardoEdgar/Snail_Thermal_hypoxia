@@ -39,7 +39,7 @@ Cardiac_time_windows <- Cardiac_time_windows %>%
   ) %>%
   dplyr::mutate(
     Temperature = case_when(
-      Treatment == "1C" ~ 1,
+      Treatment == "1C" ~ 1.5,
       Treatment == "8C" ~ 8,
       Treatment == "15C" ~ 15,
       Treatment == "29C" ~ 29,
