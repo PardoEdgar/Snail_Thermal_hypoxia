@@ -20,6 +20,7 @@ Signal processing and heart rate variability (HRV) analyses are perform with R.
 **Edgar Alejandro Pardo-Sarmiento**
 
 - Escuela de Ciencias e Ingeniería, Universidad del Rosario, Colombia
+- ORCID: 0009-0004-0623-8455
 
 ## Requirements
  - R (V.4.4.2)
