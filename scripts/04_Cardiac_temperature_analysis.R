@@ -43,7 +43,6 @@ HRV_metrics_total_tem <- HRV_metrics_total %>%
 
 HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(MeanHR)
 levene_test(MeanHR ~ Treatment, data = HRV_metrics_total_tem)
-hist(log(HRV_metrics_total_tem$MeanHR))
 qqnorm(HRV_metrics_total_tem$MeanHR)
 qqline(HRV_metrics_total_tem$MeanHR)
 
@@ -324,22 +323,22 @@ res_tem_HRV <- dun_test_tem_HRV$res
 res_tem_HRV
 
 
-mean_baseline <- HRV_metrics_total_tem %>%
+mean_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>%
   summarise(mean_HR = mean(MeanHR), sd_HR = sd(MeanHR))
-mean_baseline
+mean_summary
 
 
 
-mean_baseline <- HRV_metrics_total_tem %>%
+mean_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>% dplyr::filter(Treatment == "15C") %>% 
   summarise(Median_CV = mean(CV), sd_CV = sd(CV))
-mean_baseline
+mean_summary
 
-median_baseline <- HRV_metrics_total_tem %>%
+median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>%
   summarise(Median_CV = median(CV), IQR_CV = IQR(CV))
-median_baseline
+median_summary
 
 
 HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(NNi)
@@ -348,40 +347,40 @@ HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(SDNN)
 HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(RMSSD)
 
 
-median_baseline <- HRV_metrics_total_tem %>%
+median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>% dplyr::filter(Treatment %in% c("1C","29C","36C")) %>% 
   summarise(Median_NNi = median(NNi), IQR_NNi = IQR(NNi))
-median_baseline
+median_summary
 
-mean_baseline <- HRV_metrics_total_tem %>%
+mean_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>% dplyr::filter(Treatment %in% c("8C","15C","WATHEAT")) %>% 
   summarise(Mean_NNi = mean(NNi), sd_NNi = sd(NNi))
-mean_baseline
+mean_summary
 
 
-median_baseline <- HRV_metrics_total_tem %>%
+median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>% dplyr::filter(Treatment %in% c("WATHEAT","36C")) %>% 
   summarise(Median_pNN50 = median(pNN50), IQR_pNN50 = IQR(pNN50))
-median_baseline
+median_summary
 
-mean_baseline <- HRV_metrics_total_tem %>%
+mean_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>% dplyr::filter(Treatment %in% c("1C","8C","15C","29C")) %>% 
   summarise(Mean_pNN50 = mean(pNN50), sd_pNN50 = sd(pNN50))
-mean_baseline
+mean_summary
 
 
-median_baseline <- HRV_metrics_total_tem %>%
+median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>% dplyr::filter(Treatment %in% c("1C","WATHEAT","29C","36C")) %>% 
   summarise(Median_SDNN = median(SDNN), IQR_SDNN = IQR(SDNN))
-median_baseline
+median_summary
 
-mean_baseline <- HRV_metrics_total_tem %>%
+mean_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>% dplyr::filter(Treatment %in% c("8C","15C"))%>%
   summarise(Mean_SDNN = mean(SDNN), sd_SDNN = sd(SDNN))
-mean_baseline
+mean_summary
 
 
-median_baseline <- HRV_metrics_total_tem %>%
+median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>%
   summarise(Median_RMSSD = median(RMSSD), IQR_RMSSD = IQR(RMSSD))
-median_baseline
+median_summary
