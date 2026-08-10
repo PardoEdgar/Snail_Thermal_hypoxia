@@ -15,7 +15,7 @@ HRV_metrics_total <- readxl::read_xlsx("C:/Users/jandr/OneDrive - Universidad de
 )
 HRV_metrics_total <- HRV_metrics_total %>%
   mutate(across(
-    c(Temperature, MeanHR, SDNN, RMSSD, pNN50, NNi, pNN100, CV),
+    c(Temperature, MeanHR, SDNN, RMSSD, pNN50, NNi, CV),
     as.numeric
   ))
 
@@ -292,7 +292,7 @@ mean_baseline <- HRV_metrics_baseline %>%
 mean_baseline
 
 median_baseline <- HRV_metrics_baseline %>%
-  group_by(Treatment)  %>% dplyr::filter(Treatment %in% c(,"ENVHEAT","WATHEAT")) %>%
+  group_by(Treatment)  %>% dplyr::filter(Treatment %in% c("ENVHEAT","WATHEAT")) %>%
   summarise(Median_pNN50 = median(pNN50), IQR_pNN50 = IQR(pNN50))
 median_baseline
 
