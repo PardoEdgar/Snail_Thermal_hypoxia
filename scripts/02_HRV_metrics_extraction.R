@@ -133,4 +133,3 @@ HRV_metrics_total <- HRV_metrics_total %>%
   ) %>%
   dplyr::filter(!is.na(Block))
 
-view(HRV_metrics_total)
