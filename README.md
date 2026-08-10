@@ -2,18 +2,18 @@
 
 This repository contains all data and code used in the study:
 
-**"Short-term oxygen deprivation during high and low temperature water immersion influences heart dynamics function of the invasive snail *Cornu aspersum*"**
+**"Short-term oxygen deprivation during high and low temperature water immersion influences heart function of the invasive snail *Cornu aspersum*"**
 
 
 
 
 ## Overview
 
-This repository has the content to quantify cardiac activity during short-term water immersion across different tempeeratures in the land snail *Cornu aspersum*. 
+This repository has the content to quantify cardiac activity during short-term water immersion across different temperatures in the invasive snail *Cornu aspersum*. 
 
-Our methodology uses optocardiography based on pixel intensity changes.
+Our methodology uses optocardiography and a computational workflow based on pixel intensity changes.
 
-Signal processing and heart rate variability (HRV) analyses are implemented in R to investigate.
+Signal processing and heart rate variability (HRV) analyses are perform with R.
 
 
 ## Author
@@ -58,12 +58,12 @@ All data and code required to reproduce the workflow and analyses are included i
  - All data and figures are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 ## Collaborators
-**Juan Pablo Hernández**
+**Juan Pablo Hernández Benavides**
 
 - Escuela de Ciencias e Ingenería, Universidad del Rosario, Colombia
-
+- ORCID: 0000-0002-6689-0830
 **Andre J. Riveros**
 
 - Escuela de Ciencias e Ingeniería, Universidad del Rosario, Bogota. Colombia
 - Department of Neuroscience, School of Science, University of Arizona, Tucson, Arizona. United States of America
-
+- ORCID: 0000-0001-7928-1885
