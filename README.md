@@ -13,7 +13,7 @@ This repository has the content to quantify cardiac activity during short-term w
 
 Our methodology uses optocardiography and a computational workflow based on pixel intensity changes.
 
-Signal processing and heart rate variability (HRV) analyses are perform with R.
+Signal processing and heart rate variability (HRV) analyses are performed in R.
 
 
 ## Author
