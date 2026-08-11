@@ -20,7 +20,8 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
 **Edgar Alejandro Pardo-Sarmiento**
 
 - Escuela de Ciencias e Ingeniería, Universidad del Rosario, Colombia
-- ORCID: 0009-0004-0623-8455
+- ORCID: 0009-0004-0623-8
+
 
 ## Requirements
  - R (V.4.4.2)
@@ -63,6 +64,8 @@ All data and code required to reproduce the workflow and analyses are included i
 
 - Escuela de Ciencias e Ingenería, Universidad del Rosario, Colombia
 - ORCID: 0000-0002-6689-0830
+
+
 **Andre J. Riveros**
 
 - Escuela de Ciencias e Ingeniería, Universidad del Rosario, Bogota. Colombia
