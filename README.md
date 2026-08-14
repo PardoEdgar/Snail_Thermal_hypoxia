@@ -38,10 +38,10 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
 ## Reproducibility
 Conventions to consider: 
 
-- ENVCOLD: Environmental temperature treatment recorded before water immersion (air) in the low-temperature group. It is the registered temperature 21.64±0.09°C
-- WATCOLD: Environmental temperature treatment recorded after water immersion in the low-temperature group. It is the registered temperature 22.06±0.05°C
-- ENVHEAT: Environmental temperature treatment recorded before water immersion (air) in the high-temperature group. It is the registered temperature 19.63±0.25°C
-- WATHEAT: Environmental temperature treatment recorded after water immersion in the high-temperature group. It is the registered temperature 20.63±0.12 °C. Data from this treatment are used as the environmental reference temperature for the temperature comparison analysis, the post-immersion two time-interval analysis, and the heart function vs. body mass analyses.
+- ENVCOLD: Environmental temperature treatment recorded before water immersion (air) in the low-temperature group. The recorded temperature was 21.64±0.09°C
+- WATCOLD: Environmental temperature treatment recorded after water immersion in the low-temperature group. The recorded temperature was 22.06±0.05°C
+- ENVHEAT: Environmental temperature treatment recorded before water immersion (air) in the high-temperature group. The recorded temperature was 19.63±0.25°C
+- WATHEAT: Environmental temperature treatment recorded after water immersion in the high-temperature group. The recorded temperature was 20.63±0.12 °C. Data from this treatment are used as the environmental reference temperature for the temperature comparison analysis, the post-immersion two time-interval analysis, and the heart function vs. body mass analyses.
 - 1C: When mentioned is 1.50°C temperature treatment, but for abbreviation in analysis and data is usually noted as 1C.
 
 The following are the R scripts used for data extraction and analysis and are provided in sequential order:
@@ -54,7 +54,7 @@ The following are the R scripts used for data extraction and analysis and are pr
    
 ## Contents
  - `Data/` Raw and processed datasets
-    - Optocadiographic_data
+    - Optocardiographic_data
  - `Scripts/` R scripts for data extraction and analysis
  - `Google Drive folder` Presents the optocardiograms with the pixel-intensity data over time for all experimental treatments and recordings. Link: https://drive.google.com/drive/folders/1fX7OBxKt-VaYgu_Iyaah_0rEejzOyl6W?usp=drive_link
 
