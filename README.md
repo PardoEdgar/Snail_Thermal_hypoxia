@@ -23,7 +23,7 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
 
 
 ## Requirements
- - R (V.4.4.2)
+ - R (V4.4.2)
  - Required packages
      - tidyverse
      - readxl
@@ -42,7 +42,7 @@ Conventions to consider:
 - WATCOLD: Environmental temperature treatment recorded after water immersion in the low-temperature group. The recorded temperature was 22.06±0.05°C
 - ENVHEAT: Environmental temperature treatment recorded before water immersion (air) in the high-temperature group. The recorded temperature was 19.63±0.25°C
 - WATHEAT: Environmental temperature treatment recorded after water immersion in the high-temperature group. The recorded temperature was 20.63±0.12 °C. Data from this treatment are used as the environmental reference temperature for the temperature comparison analysis, the post-immersion two time-interval analysis, and the heart function vs. body mass analyses.
-- 1C: When mentioned is 1.50°C temperature treatment, but for abbreviation in analysis and data is usually noted as 1C.
+- 1C: Refers to the 1.50°C temperature treatment, which is usually abbreviated as 1C in the analyses and data.
 
 The following are the R scripts used for data extraction and analysis and are provided in sequential order:
  - `01_Optocardiography.R`
@@ -56,7 +56,7 @@ The following are the R scripts used for data extraction and analysis and are pr
  - `Data/` Raw and processed datasets
     - Optocardiographic_data
  - `Scripts/` R scripts for data extraction and analysis
- - `Google Drive folder` Presents the optocardiograms with the pixel-intensity data over time for all experimental treatments and recordings. Link: https://drive.google.com/drive/folders/1fX7OBxKt-VaYgu_Iyaah_0rEejzOyl6W?usp=drive_link
+ - `Google Drive folder` Contains the optocardiograms with the pixel-intensity data over time for all experimental treatments and recordings. Link: https://drive.google.com/drive/folders/1fX7OBxKt-VaYgu_Iyaah_0rEejzOyl6W?usp=drive_link
 
 ## Data Availability
 
