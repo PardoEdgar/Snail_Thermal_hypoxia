@@ -75,6 +75,6 @@ All data and code required to reproduce the workflow and analyses are included i
 
 **Andre J. Riveros**
 
-- Escuela de Ciencias e Ingeniería, Universidad del Rosario, Bogota. Colombia
+- Escuela de Ciencias e Ingeniería, Universidad del Rosario, Bogotá. Colombia
 - Department of Neuroscience, School of Science, University of Arizona, Tucson, Arizona. United States of America
 - ORCID: 0000-0001-7928-1885
