@@ -47,13 +47,11 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
 ## Contents
  - `Data/` Raw and processed datasets
     - Optocadiographic_data
- - `Images/` Optocardiogram images from Optocardiography
-    - Optocardiograms
  - `Scripts/` R scripts for data extraction and analysis
 
 ## Data Availability
 
-All data and code required to reproduce the workflow and analyses are included in this repository.
+All data and code required to reproduce the workflow and analyses are included in this repository and the Google drive folder https://drive.google.com/drive/folders/1fX7OBxKt-VaYgu_Iyaah_0rEejzOyl6W?usp=drive_link
 
 ## Licenses
  - The source code in this repository is licensed under the MIT License.  
