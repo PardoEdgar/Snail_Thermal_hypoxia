@@ -39,13 +39,13 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
 ## Reproducibility
 Conventions to consider: 
 
-- ENVCOLD: Environmental temperature treatment register before water immersion (air) in the cold temperature group. It is the registered temperature 21.64±0.09°C
-- WATCOLD: Environmental temperature treatment register after water immersion in the cold temperature group. It is the registered temperature 22.06±0.05°C
-- ENVHEAT: Environmental temperature treatment register before water immersion (air) in the heat temperature group. It is the registered temperature 19.63±0.25°C
-- WATHEAT: Environmental temperature treatment register after water immersion in the heat temperature group. It is the registered temperature 20.63±0.12 °C and used as environmental reference temperature in temperature comparison, two time intervals and heart function vs mass analysis. 
+- ENVCOLD: Environmental temperature treatment register before water immersion (air) in the low temperature group. It is the registered temperature 21.64±0.09°C
+- WATCOLD: Environmental temperature treatment register after water immersion in the low temperature group. It is the registered temperature 22.06±0.05°C
+- ENVHEAT: Environmental temperature treatment register before water immersion (air) in the high temperature group. It is the registered temperature 19.63±0.25°C
+- WATHEAT: Environmental temperature treatment register after water immersion in the high temperature group. It is the registered temperature 20.63±0.12 °C and used as environmental reference temperature in temperature comparison, two time intervals and heart function vs mass analysis. 
 - 1C: When mentioned is 1.50°C temperature treatment, but for abbreviation in analysis and data is usually noted as 1C.
 
-The following are the R scripts used for data extraction and analysis
+The following are the R scripts used for data extraction and analysis and are provided in sequential order:
  - `01_Optocardiography.R`
  - `02_HRV_metrics_extraction.R`
  - `03_Cardiac_water_immersion_analysis.R`
