@@ -31,7 +31,7 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
      - FSA
      - ggplot2
      - ggpubr
-     - rhrv
+     - RHRV
      - car
      - signal
        
