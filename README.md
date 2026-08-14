@@ -8,7 +8,7 @@ This repository contains all data and code used in the study:
 
 
 ## Overview
-his repository contains the data and code used to quantify heart function during short-term water immersion across different temperatures in the invasive snail *Cornu aspersum*. 
+This repository contains the data and code used to quantify heart function during short-term water immersion across different temperatures in the invasive snail *Cornu aspersum*. 
 
 Our methodology uses optocardiography and a computational workflow based on pixel intensity changes.
 
@@ -56,6 +56,7 @@ The following are the R scripts used for data extraction and analysis and are pr
  - `Data/` Raw and processed datasets
     - Optocadiographic_data
  - `Scripts/` R scripts for data extraction and analysis
+ - `Google Drive folder` Presents the optocardiograms with the pixel-intensity data over time for all experimental treatments and recordings. Link: https://drive.google.com/drive/folders/1fX7OBxKt-VaYgu_Iyaah_0rEejzOyl6W?usp=drive_link
 
 ## Data Availability
 
