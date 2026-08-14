@@ -42,7 +42,7 @@ Conventions to consider:
 - ENVCOLD: Environmental temperature treatment register before water immersion (air) in the low temperature group. It is the registered temperature 21.64±0.09°C
 - WATCOLD: Environmental temperature treatment register after water immersion in the low temperature group. It is the registered temperature 22.06±0.05°C
 - ENVHEAT: Environmental temperature treatment register before water immersion (air) in the high temperature group. It is the registered temperature 19.63±0.25°C
-- WATHEAT: Environmental temperature treatment register after water immersion in the high temperature group. It is the registered temperature 20.63±0.12 °C and used as environmental reference temperature in temperature comparison, two time intervals and heart function vs mass analysis. 
+- WATHEAT: Environmental temperature treatment register after water immersion in the high temperature group. It is the registered temperature 20.63±0.12 °C. Data from this treatment is used as the environmental reference temperature for the temperature comparison analysis, the post-immersion two time-interval analysis, and heart function vs. body mass analyses.
 - 1C: When mentioned is 1.50°C temperature treatment, but for abbreviation in analysis and data is usually noted as 1C.
 
 The following are the R scripts used for data extraction and analysis and are provided in sequential order:
