@@ -1,6 +1,6 @@
 # Snail Thermal Hypoxia (2026)
 
-This repository contains all data and code used in the study:
+This repository and the associated Google Drive folder contain all data and code used in the study:
 
 **"Short-term oxygen deprivation during high and low temperature water immersion influences heart function of the invasive snail *Cornu aspersum*"**
 
@@ -8,7 +8,7 @@ This repository contains all data and code used in the study:
 
 
 ## Overview
-This repository contains the data and code used to quantify heart function during short-term water immersion across different temperatures in the invasive snail *Cornu aspersum*. 
+This repository and the associated Google Drive folder contain the data and code used to quantify heart function during short-term water immersion across different temperatures in the invasive snail *Cornu aspersum*. 
 
 Our methodology uses optocardiography and a computational workflow based on pixel intensity changes.
 
@@ -23,7 +23,7 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
 
 
 ## Requirements
- - R (V4.4.2)
+ - R (v4.4.2)
  - Required packages
      - tidyverse
      - readxl
