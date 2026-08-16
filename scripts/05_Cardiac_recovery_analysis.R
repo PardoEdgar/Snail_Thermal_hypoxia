@@ -1,5 +1,5 @@
 ###############################################################################
-# Cardiac recovery analysis (Comparing two Time windows after water immersion across different temperatures)
+# Cardiac recovery analysis (Comparing two time intervals, first and last 30 seconds after water immersion across different temperatures)
 # Author: Edgar Alejandro Pardo-Sarmiento
 ###############################################################################
 library(dplyr)
@@ -7,7 +7,7 @@ library(tidyverse)
 library(readxl)
 
 all_valleys <- readxl::read_xlsx(
-  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+ "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "all_valleys"
 )
 all_valleys$Time <- as.numeric(all_valleys$Time)
