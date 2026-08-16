@@ -1,5 +1,5 @@
 ###############################################################################
-# Cardiac recovery analysis (Comparing two time intervals, first and last 30 seconds after water immersion across different temperatures)
+# Cardiac recovery analysis (Comparing two time intervals, first and last 30 seconds, after water immersion across different temperatures)
 # Author: Edgar Alejandro Pardo-Sarmiento
 ###############################################################################
 library(dplyr)
