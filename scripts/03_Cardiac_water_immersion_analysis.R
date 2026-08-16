@@ -10,7 +10,7 @@ library(rstatix)
 library(ggpubr)
 
 #Results: HR & HRV baseline
-HRV_metrics_total <- readxl::read_xlsx("C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx", 
+HRV_metrics_total <- readxl::read_xlsx("S1_File_Supplementary_data_Pardo_Sarmiento.xlsx", 
   sheet = "HRV_metrics_total"
 )
 HRV_metrics_total <- HRV_metrics_total %>%
