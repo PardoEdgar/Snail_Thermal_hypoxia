@@ -1,5 +1,5 @@
 ###############################################################################
-# Mass effect in HR and HRV across different temperatures
+# Mass effect in HR and HRV after water immersion across different temperatures 
 # Author: Edgar Alejandro Pardo-Sarmiento
 ###############################################################################
 library(tidyverse)
