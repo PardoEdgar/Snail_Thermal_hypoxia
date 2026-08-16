@@ -10,7 +10,7 @@ library(readxl)
 library(FSA)
 
 HRV_metrics_total <- readxl::read_xlsx(
-"C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
 
@@ -42,7 +42,6 @@ HRV_metrics_total_tem <- HRV_metrics_total %>%
 #HR
 
 HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(MeanHR)
-levene_test(MeanHR ~ Treatment, data = HRV_metrics_total_tem)
 qqnorm(HRV_metrics_total_tem$MeanHR)
 qqline(HRV_metrics_total_tem$MeanHR)
 
@@ -100,8 +99,8 @@ HR_2 <- ggplot(HRV_metrics_total_tem, aes(x = Temperature, y = MeanHR)) +
   ) +
   theme_classic2()
 
-lineal_model <- lm(MeanHR ~ log(Temperature), data = HRV_metrics_total_tem)
-summary(lineal_model)
+log_model <- lm(MeanHR ~ log(Temperature), data = HRV_metrics_total_tem)
+summary(log_model)
 
 #Heart rate variability
 
@@ -142,11 +141,11 @@ CV_2 <- ggplot(HRV_metrics_total_tem, aes(x = Temperature, y = CV)) +
   theme_classic2()
 
 
-lineal_model <- lm(
+quadratic_model <- lm(
   CV ~ Temperature + I(Temperature^2),
   data = HRV_metrics_total_tem
 )
-summary(lineal_model)
+summary(quadratic_model)
 
 
 #Time domain HRV metrics
@@ -318,9 +317,9 @@ mean_summary <- HRV_metrics_total_tem %>%
 mean_summary
 
 
-
 mean_summary <- HRV_metrics_total_tem %>%
-  group_by(Treatment) %>% dplyr::filter(Treatment == "15C") %>% 
+  group_by(Treatment) %>%
+  dplyr::filter(Treatment == "15C") %>%
   summarise(Median_CV = mean(CV), sd_CV = sd(CV))
 mean_summary
 
@@ -337,34 +336,40 @@ HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(RMSSD)
 
 
 median_summary <- HRV_metrics_total_tem %>%
-  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("1C","29C","36C")) %>% 
+  group_by(Treatment) %>%
+  dplyr::filter(Treatment %in% c("1C", "29C", "36C")) %>%
   summarise(Median_NNi = median(NNi), IQR_NNi = IQR(NNi))
 median_summary
 
 mean_summary <- HRV_metrics_total_tem %>%
-  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("8C","15C","WATHEAT")) %>% 
+  group_by(Treatment) %>%
+  dplyr::filter(Treatment %in% c("8C", "15C", "WATHEAT")) %>%
   summarise(Mean_NNi = mean(NNi), sd_NNi = sd(NNi))
 mean_summary
 
 
 median_summary <- HRV_metrics_total_tem %>%
-  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("WATHEAT","36C")) %>% 
+  group_by(Treatment) %>%
+  dplyr::filter(Treatment %in% c("WATHEAT", "36C")) %>%
   summarise(Median_pNN50 = median(pNN50), IQR_pNN50 = IQR(pNN50))
 median_summary
 
 mean_summary <- HRV_metrics_total_tem %>%
-  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("1C","8C","15C","29C")) %>% 
+  group_by(Treatment) %>%
+  dplyr::filter(Treatment %in% c("1C", "8C", "15C", "29C")) %>%
   summarise(Mean_pNN50 = mean(pNN50), sd_pNN50 = sd(pNN50))
 mean_summary
 
 
 median_summary <- HRV_metrics_total_tem %>%
-  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("1C","WATHEAT","29C","36C")) %>% 
+  group_by(Treatment) %>%
+  dplyr::filter(Treatment %in% c("1C", "WATHEAT", "29C", "36C")) %>%
   summarise(Median_SDNN = median(SDNN), IQR_SDNN = IQR(SDNN))
 median_summary
 
 mean_summary <- HRV_metrics_total_tem %>%
-  group_by(Treatment) %>% dplyr::filter(Treatment %in% c("8C","15C"))%>%
+  group_by(Treatment) %>%
+  dplyr::filter(Treatment %in% c("8C", "15C")) %>%
   summarise(Mean_SDNN = mean(SDNN), sd_SDNN = sd(SDNN))
 mean_summary
 
