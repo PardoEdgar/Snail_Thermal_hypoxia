@@ -7,7 +7,7 @@ library(tidyverse)
 library(readxl)
 
 all_valleys <- readxl::read_xlsx(
-"C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "all_valleys"
 )
 all_valleys$Time <- as.numeric(all_valleys$Time)
@@ -111,38 +111,35 @@ qqnorm(Cardiac_time_windows$MeanHR)
 qqline(Cardiac_time_windows$MeanHR)
 
 stats_results <- Cardiac_time_windows %>%
-  group_by(Treatment) %>% dplyr::filter(
+  group_by(Treatment) %>%
+  dplyr::filter(
     Treatment %in% c("1C", "8C", "15C", "29C")
-  ) %>% 
+  ) %>%
   t_test(MeanHR ~ period, paired = TRUE)
 stats_results
 
 
 stats_results <- Cardiac_time_windows %>%
-  group_by(Treatment) %>% dplyr::filter(
+  group_by(Treatment) %>%
+  dplyr::filter(
     Treatment %in% c("WATHEAT", "36C")
-  ) %>% 
+  ) %>%
   wilcox_test(MeanHR ~ period, paired = TRUE)
 stats_results
 
 Cardiac_time_windows |>
-  group_by(Treatment, period) %>% dplyr::filter(
+  group_by(Treatment, period) %>%
+  dplyr::filter(
     Treatment %in% c("1C", "8C", "15C", "29C")
-  ) %>% 
+  ) %>%
   summarise(Mean_HR = mean(MeanHR), sd_HR = sd(MeanHR))
 
 
 Cardiac_time_windows |>
-  group_by(Treatment, period) %>% dplyr::filter(
+  group_by(Treatment, period) %>%
+  dplyr::filter(
     Treatment %in% c("WATHEAT", "36C")
-  ) %>% 
-  summarise(Mean_HR = median(MeanHR), IQR_HR = IQR(MeanHR))
-
-
-Cardiac_time_windows |>
-  group_by(Treatment, period) %>% dplyr::filter(
-    Treatment %in% c("WATHEAT", "36C")
-  ) %>% 
+  ) %>%
   summarise(Median_HR = median(MeanHR), IQR_HR = IQR(MeanHR))
 
 
@@ -205,7 +202,6 @@ by(
 
 
 Cardiac_time_windows %>% group_by(Treatment, period) %>% shapiro_test(CV)
-levene_test(CV ~ Treatment, data = Cardiac_time_windows)
 hist(Cardiac_time_windows$CV)
 qqnorm(Cardiac_time_windows$CV)
 qqline(Cardiac_time_windows$CV)
