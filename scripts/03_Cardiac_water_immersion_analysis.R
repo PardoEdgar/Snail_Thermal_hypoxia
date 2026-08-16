@@ -1,6 +1,6 @@
 
 ###############################################################################
-# Cardiac parameters analysis (Comparison with and without water immersion)
+# Cardiac parameters analysis (Comparison before and after water immersion)
 # Author: Edgar Alejandro Pardo-Sarmiento
 ###############################################################################
 
