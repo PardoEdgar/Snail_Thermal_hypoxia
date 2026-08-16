@@ -60,7 +60,7 @@ The following are the R scripts used for data extraction and analysis and are pr
 
 ## Data Availability
 
-All data and code required to reproduce the workflow and analyses are included in this repository and the associated Google Drive folder https://drive.google.com/drive/folders/1fX7OBxKt-VaYgu_Iyaah_0rEejzOyl6W?usp=drive_link
+All data and code required to reproduce the workflow and analyses are included in this repository and the associated Google Drive folder
 
 ## Licenses
  - The source code in this repository is licensed under the MIT License.  
