@@ -9,12 +9,12 @@ library(readxl)
 library(car)
 
 body_mass <- readxl::read_xlsx(
-"C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "Body_mass"
 )
 body_mass$ID <- as.character(body_mass$ID)
 HRV_metrics_total <- readxl::read_xlsx(
-"C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
 
@@ -85,8 +85,12 @@ mass_HR <- ggplot(
   theme_classic2()
 
 
-combined_data$Mass_centered <- combined_data$`Mass_(g)` - mean(combined_data$`Mass_(g)`, na.rm = TRUE)
-model_lm_centered <- lm(MeanHR ~ Temperature * Mass_centered, data = combined_data)
+combined_data$Mass_centered <- combined_data$`Mass_(g)` -
+  mean(combined_data$`Mass_(g)`, na.rm = TRUE)
+model_lm_centered <- lm(
+  MeanHR ~ Temperature * Mass_centered,
+  data = combined_data
+)
 summary(model_lm_centered)
 car::Anova(model_lm_centered, type = 3)
 
@@ -176,3 +180,5 @@ slopes_by_temp_CV <- combined_data %>%
     slope = estimate,
   )
 slopes_by_temp_CV
+
+
