@@ -22,7 +22,10 @@ HRV_metrics_total <- HRV_metrics_total %>%
     as.numeric
   ))
 HRV_metrics_total$ID <- as.character(HRV_metrics_total$ID)
-
+nrow(HRV_metrics_total)
+HRV_metrics_total |>
+  group_by(Treatment) |>
+  summarise(n = n())
 combined_data <- left_join(
   HRV_metrics_total,
   body_mass,
