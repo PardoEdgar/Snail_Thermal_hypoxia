@@ -71,8 +71,8 @@ data_long <- data %>%
 
   if (length(filtered_valleys) > 0) {
     final_valleys <- tibble(
-      time = results$t[filtered_valleys],
-      value = results$smoothed[filtered_valleys]
+      Time = results$t[filtered_valleys],
+      Value = results$smoothed[filtered_valleys]
     )
   } else {
     final_valleys <- NULL
@@ -126,8 +126,8 @@ data_long <- data %>%
 
   if (length(filtered_peaks) > 0) {
     final_peaks <- tibble(
-      time = results$t[filtered_peaks],
-      value = results$smoothed[filtered_peaks]
+      Time = results$t[filtered_peaks],
+      Value = results$smoothed[filtered_peaks]
     )
   } else {
     final_peaks <- NULL
@@ -141,8 +141,8 @@ data_long <- data %>%
     geom_line(aes(y = value, color = "Raw signal"), size = 0.8) +
     geom_line(aes(y = smoothed, color = "Smoothed signal"), size = 0.9) +
     geom_line(aes(y = trend, color = "Trend", linetype = "Trend"), size = 1) +
-    geom_point(data = final_valleys, aes(x = time, y = value, color = "Valleys", shape = "Valleys"), size = 2) +
-    geom_point(data = final_peaks, aes(x = time, y = value, color = "Peaks", shape = "Peaks"), size = 2) +
+    geom_point(data = final_valleys, aes(x = Time, y = Value, color = "Valleys", shape = "Valleys"), size = 2) +
+    geom_point(data = final_peaks, aes(x = Time, y = Value, color = "Peaks", shape = "Peaks"), size = 2) +
 
     labs(title = paste("Signals and detected peaks - ID", id),
          x = "Time (s)", y = "Intensity", color = "", linetype = "", shape = "") +
