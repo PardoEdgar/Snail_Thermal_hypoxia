@@ -49,7 +49,7 @@ anovaHR <- aov(MeanHR ~ Treatment, HRV_metrics_total_tem)
 summary(anovaHR)
 TukeyHSD(anovaHR)
 
-#Heart rate variability
+#HRV
 
 HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(CV)
 levene_test(CV ~ Treatment, data = HRV_metrics_total_tem)
@@ -148,7 +148,7 @@ quadratic_model <- lm(
 summary(quadratic_model)
 
 
-#Time domain HRV metrics
+#NN intervals and Time-domain HRV metrics
 
 ggplot(HRV_metrics_total_tem, aes(x = Temperature, y = NNi)) +
   geom_boxplot(
