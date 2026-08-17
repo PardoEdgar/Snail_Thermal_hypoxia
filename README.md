@@ -2,7 +2,7 @@
 
 This repository and the associated Google Drive folder contain all data and code used in the study:
 
-**"Short-term oxygen deprivation during high and low temperature water immersion influences heart function of the invasive snail *Cornu aspersum*"**
+**"Short-term oxygen deprivation during water immersion at high and low temperatures influences heart function of the invasive snail *Cornu aspersum*"**
 
 
 
