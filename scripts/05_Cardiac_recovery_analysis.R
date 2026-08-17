@@ -7,7 +7,7 @@ library(tidyverse)
 library(readxl)
 
 all_valleys <- readxl::read_xlsx(
- "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "all_valleys"
 )
 all_valleys$Time <- as.numeric(all_valleys$Time)
@@ -103,17 +103,22 @@ by(
   }
 )
 
-Cardiac_time_windows %>% group_by(Treatment, period) %>% shapiro_test(MeanHR)
-
-levene_test(MeanHR ~ Treatment, data = Cardiac_time_windows)
-hist(Cardiac_time_windows$MeanHR)
-qqnorm(Cardiac_time_windows$MeanHR)
-qqline(Cardiac_time_windows$MeanHR)
+normality_diff_HR <- Cardiac_time_windows |>
+  select(ID, Treatment, period, MeanHR) |>
+  pivot_wider(
+    names_from = period,
+    values_from = MeanHR
+  ) |>
+  drop_na(First_30s, Last_30s) |>
+  mutate(diff_HR = Last_30s - First_30s) |>
+  group_by(Treatment) |>
+  shapiro_test(diff_HR)
+normality_diff_HR
 
 stats_results <- Cardiac_time_windows %>%
   group_by(Treatment) %>%
   dplyr::filter(
-    Treatment %in% c("1C", "8C", "15C", "29C")
+    Treatment %in% c("1C", "8C", "15C", "29C", "WATHEAT", "36C")
   ) %>%
   t_test(MeanHR ~ period, paired = TRUE)
 stats_results
@@ -121,25 +126,21 @@ stats_results
 
 stats_results <- Cardiac_time_windows %>%
   group_by(Treatment) %>%
-  dplyr::filter(
-    Treatment %in% c("WATHEAT", "36C")
-  ) %>%
+  dplyr::filter(Treatment == "29C") %>%
   wilcox_test(MeanHR ~ period, paired = TRUE)
 stats_results
 
 Cardiac_time_windows |>
   group_by(Treatment, period) %>%
   dplyr::filter(
-    Treatment %in% c("1C", "8C", "15C", "29C")
+    Treatment %in% c("1C", "8C", "15C", "29C", "WATHEAT", "36C")
   ) %>%
   summarise(Mean_HR = mean(MeanHR), sd_HR = sd(MeanHR))
 
 
 Cardiac_time_windows |>
   group_by(Treatment, period) %>%
-  dplyr::filter(
-    Treatment %in% c("WATHEAT", "36C")
-  ) %>%
+  dplyr::filter(Treatment == "29C") %>%
   summarise(Median_HR = median(MeanHR), IQR_HR = IQR(MeanHR))
 
 
@@ -201,17 +202,47 @@ by(
 )
 
 
-Cardiac_time_windows %>% group_by(Treatment, period) %>% shapiro_test(CV)
-hist(Cardiac_time_windows$CV)
-qqnorm(Cardiac_time_windows$CV)
-qqline(Cardiac_time_windows$CV)
+normality_diff_CV <- Cardiac_time_windows |>
+  select(ID, Treatment, period, CV) |>
+  pivot_wider(
+    names_from = period,
+    values_from = CV
+  ) |>
+  drop_na(First_30s, Last_30s) |>
+  mutate(diff_CV = Last_30s - First_30s) |>
+  group_by(Treatment) |>
+  shapiro_test(diff_CV)
+normality_diff_CV
+
 
 stats_results <- Cardiac_time_windows %>%
   group_by(Treatment) %>%
+  dplyr::filter(
+    Treatment %in% c("8C", "WATHEAT", "36C")
+  ) %>%
+  t_test(CV ~ period, paired = TRUE)
+stats_results
+
+stats_results <- Cardiac_time_windows %>%
+  group_by(Treatment) %>%
+  dplyr::filter(
+    Treatment %in% c("1C", "15C", "29C")
+  ) %>%
   wilcox_test(CV ~ period, paired = TRUE)
 stats_results
 
 
 Cardiac_time_windows |>
-  group_by(Treatment, period) |>
+  group_by(Treatment, period) %>%
+  dplyr::filter(
+    Treatment %in% c("8C", "WATHEAT", "36C")
+  ) %>%
+  summarise(Mean_CV = mean(CV), SD_CV = sd(CV))
+
+
+Cardiac_time_windows |>
+  group_by(Treatment, period) %>%
+  dplyr::filter(
+    Treatment %in% c("1C", "15C", "29C")
+  ) %>%
   summarise(Median_CV = median(CV), IQR_CV = IQR(CV))
