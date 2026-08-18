@@ -8,12 +8,12 @@ library(rstatix)
 library(ggpubr)
 
 body_mass <- readxl::read_xlsx(
-  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "Body_mass"
 )
 body_mass$ID <- as.character(body_mass$ID)
 HRV_metrics_total <- readxl::read_xlsx(
-  "C:/Users/jandr/OneDrive - Universidad del rosario/Temperature_JP_HRV_data/Pardo_Sarmiento _et_al_2/S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
+  "S1_File_Supplementary_data_Pardo_Sarmiento.xlsx",
   sheet = "HRV_metrics_total"
 )
 HRV_metrics_total <- HRV_metrics_total %>%
