@@ -312,42 +312,42 @@ HRV_metrics_total_tem %>% group_by(Treatment) %>% shapiro_test(RMSSD)
 
 
 kruskal.test(NNi ~ Treatment, data = HRV_metrics_total_tem)
-dun_test_tem_HRV <- dunnTest(
+dun_test_tem_NNi <- dunnTest(
   NNi ~ Treatment,
   data = HRV_metrics_total_tem,
   method = "holm"
 )
-res_tem_HRV <- dun_test_tem_HRV$res
-res_tem_HRV
+res_tem_NNi <- dun_test_tem_NNi$res
+res_tem_NNi
 
 
 kruskal.test(pNN50 ~ Treatment, data = HRV_metrics_total_tem)
-dun_test_tem_HRV <- dunnTest(
+dun_test_tem_pNN50 <- dunnTest(
   pNN50 ~ Treatment,
   data = HRV_metrics_total_tem,
   method = "holm"
 )
-res_tem_HRV <- dun_test_tem_HRV$res
-res_tem_HRV
+res_tem_pNN50 <- dun_test_tem_pNN50$res
+res_tem_pNN50
 
 kruskal.test(SDNN ~ Treatment, data = HRV_metrics_total_tem)
-dun_test_tem_HRV <- dunnTest(
+dun_test_tem_SDNN <- dunnTest(
   SDNN ~ Treatment,
   data = HRV_metrics_total_tem,
   method = "holm"
 )
-res_tem_HRV <- dun_test_tem_HRV$res
-res_tem_HRV
+res_tem_SDNN <- dun_test_tem_SDNN$res
+res_tem_SDNN
 
 
 kruskal.test(RMSSD ~ Treatment, data = HRV_metrics_total_tem)
-dun_test_tem_HRV <- dunnTest(
+dun_test_tem_RMSSD <- dunnTest(
   RMSSD ~ Treatment,
   data = HRV_metrics_total_tem,
   method = "holm"
 )
-res_tem_HRV <- dun_test_tem_HRV$res
-res_tem_HRV
+res_tem_RMSSD <- dun_test_tem_RMSSD$res
+res_tem_RMSSD
 
 median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>%
