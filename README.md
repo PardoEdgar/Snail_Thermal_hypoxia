@@ -1,4 +1,4 @@
-# Snail Thermal Hypoxia (2026)
+# Snail thermal oxygen deprivation (2026)
 
 **"Short-term oxygen deprivation during water immersion at high and low temperatures influences heart function of the invasive snail *Cornu aspersum*"**
 
