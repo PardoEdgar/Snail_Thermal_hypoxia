@@ -49,7 +49,7 @@ The following are the R scripts used for data extraction and analysis and are pr
  - `02_HRV_metrics_extraction.R`
  - `03_Cardiac_water_immersion_analysis.R`
  - `04_Cardiac_temperature_analysis.R`
- - `05_Cardiac_recovery_analysis.R`
+ - `05_Cardiac_post_immersion_temporal_changes_analysis.R`
  - `06_Cardiac_mass_analysis.R`
    
 ## Contents
