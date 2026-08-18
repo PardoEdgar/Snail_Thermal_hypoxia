@@ -44,9 +44,9 @@ The following treatment codes are used throughout the datasets and R scripts:
 
 - `ENVHEAT`: Environmental reference treatment before water immersion (M₁) in the High temperature group. Ambient air temperature was 19.63±0.25°C.
 
-- `WATHEAT`: Post-immersion environmental reference treatment (M₂) in the High temperature group. The temperature of the water used for immersion was 20.63±0.12°C. Data from this treatment are also used as the environmental reference temperature (approximately 21°C) in the analyses comparing water-immersion temperatures, post-immersion temporal changes, and the relationships between cardiac parameters and body mass.
+- `WATHEAT`: Post-immersion environmental reference treatment (M₂) in the High temperature group. The temperature of the water used for immersion was 20.63±0.12°C. Data from this treatment are also used as the environmental reference temperature (aprox 21°C) in the analyses comparing water-immersion temperatures, post-immersion temporal changes, and the relationships between cardiac parameters and body mass.
 
-- `1C`: Refers to the 1.50°C water-immersion treatment and is abbreviated as `1C` throughout the datasets and analyses.
+- `1C`: Refers to the 1.50°C water-immersion treatment and usually is abbreviated as 1C throughout the datasets and analyses.
 
 The following are the R scripts used for data extraction and analysis and are provided in sequential order:
  - `01_Optocardiography.R`
