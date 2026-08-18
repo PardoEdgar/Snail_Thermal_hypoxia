@@ -368,4 +368,3 @@ median_summary <- HRV_metrics_total_tem %>%
   group_by(Treatment) %>%
   summarise(Median_RMSSD = median(RMSSD), IQR_RMSSD = IQR(RMSSD))
 median_summary
-View(median_summary)
