@@ -57,7 +57,6 @@ The following are the R scripts used for data extraction and analysis and are pr
    
 ## Contents
  - `Data/` Raw and processed datasets
-    - Optocardiography_data
  - `Scripts/` R scripts for data extraction and analysis
  - `Google Drive folder` Contains the optocardiograms and the pixel-intensity data over time for all experimental treatments and recordings. Link: https://drive.google.com/drive/folders/1fX7OBxKt-VaYgu_Iyaah_0rEejzOyl6W?usp=drive_link
 
