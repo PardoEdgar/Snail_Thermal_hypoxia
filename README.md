@@ -36,13 +36,17 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
      - signal
        
 ## Reproducibility
-Conventions to consider: 
+The following treatment codes are used throughout the datasets and R scripts:
 
-- `ENVCOLD`: Environmental temperature treatment recorded before water immersion (air) in the low-temperature group. The recorded temperature was 21.64±0.09°C
-- `WATCOLD`: Environmental temperature treatment recorded after water immersion in the low-temperature group. The recorded temperature was 22.06±0.05°C
-- `ENVHEAT`: Environmental temperature treatment recorded before water immersion (air) in the high-temperature group. The recorded temperature was 19.63±0.25°C
-- `WATHEAT`: Environmental temperature treatment recorded after water immersion in the high-temperature group. The recorded temperature was 20.63±0.12 °C. Data from this treatment are used as the environmental reference temperature for the temperature comparison analysis, the post-immersion two time-interval analysis, and the heart function vs. body mass analyses.
-- 1C: Refers to the 1.50°C temperature treatment, which is usually abbreviated as 1C in the analyses and data.
+- `ENVCOLD`: Environmental reference treatment before water immersion (M₁) in the Low temperature group. Ambient air temperature was 21.64±0.09°C.
+
+- `WATCOLD`: Post-immersion environmental reference treatment (M₂) in the Low temperature group. The temperature of the water used for immersion was 22.06±0.05°C.
+
+- `ENVHEAT`: Environmental reference treatment before water immersion (M₁) in the High temperature group. Ambient air temperature was 19.63±0.25°C.
+
+- `WATHEAT`: Post-immersion environmental reference treatment (M₂) in the High temperature group. The temperature of the water used for immersion was 20.63±0.12°C. Data from this treatment are also used as the environmental reference temperature (approximately 21°C) in the analyses comparing water-immersion temperatures, post-immersion temporal changes, and the relationships between cardiac parameters and body mass.
+
+- `1C`: Refers to the 1.50°C water-immersion treatment and is abbreviated as `1C` throughout the datasets and analyses.
 
 The following are the R scripts used for data extraction and analysis and are provided in sequential order:
  - `01_Optocardiography.R`
