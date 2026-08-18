@@ -32,6 +32,7 @@ Signal processing and heart rate variability (HRV) analyses are performed in R.
      - RHRV
      - car
      - signal
+     - broom
        
 ## Reproducibility
 The following treatment codes are used throughout the datasets and R scripts:
